@@ -1,0 +1,7 @@
+{
+  "coin_name": "RIM",
+  "symbol": "CBC",
+  "admin_email": "star881216@gmail.com",
+  "deposit_fee_percent": 0.3,
+  "withdraw_fee_fixed": 0.0005
+}

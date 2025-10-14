@@ -1,0 +1,17 @@
+{
+  "admin": {
+    "email": "star881216@gmail.com",
+    "balance": 0,
+    "is_admin": true
+  },
+  "Mario": {
+    "email": "star881216@gmail.com",
+    "balance": 0,
+    "is_admin": false
+  },
+  "python .\\main.py": {
+    "email": "",
+    "balance": 0,
+    "is_admin": false
+  }
+}
