@@ -1,0 +1,21 @@
+{
+  "name": "waller",
+  "version": "1.0.0",
+  "description": "Sistema de wallet modular hecho desde la terminal por Mario López Valdés.",
+  "main": "panel.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@solana/spl-token": "^0.4.14",
+    "@solana/web3.js": "^1.98.4",
+    "@solflare-wallet/sdk": "^1.4.2"
+  },
+  "devDependencies": {
+    "vite": "^7.1.10"
+  }
+}
