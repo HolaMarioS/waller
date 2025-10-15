@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link rel="stylesheet" href="style.css">
+
   <meta charset="UTF-8">
   <title>Conectar Wallet Real</title>
   <script src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.7.8/dist/umd/index.min.js"></script>
@@ -58,5 +60,18 @@
       }
     }
   </script>
+  <!-- Botones de registro e inicio de sesión -->
+<div class="auth-buttons">
+  <button onclick="window.location.href='registro.html'">Registrarse</button>
+  <button onclick="window.location.href='login.html'">Iniciar sesión</button>
+</div>
+
+<!-- Sección de descarga -->
+<div class="download-section">
+  <h3>Descarga la app</h3>
+  <a href="link_android.apk" class="download-btn">Android</a>
+  <a href="link_windows.exe" class="download-btn">Windows</a>
+</div>
+
 </body>
 </html>
