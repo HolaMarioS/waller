@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Conectar Wallet - Waller</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f2027;
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+    .qr-box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-top: 30px;
+    }
+    .qr-box img {
+      width: 200px;
+      height: 200px;
+    }
+    .btn {
+      background-color: #00c896;
+      border: none;
+      padding: 12px 24px;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .btn:hover {
+      background-color: #00a67d;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bienvenido a Waller</h1>
+  <p>Escanea el siguiente código QR con tu wallet compatible (SafePal, Trust Wallet, etc).</p>
+
+  <div class="qr-box">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://waller.cuba/connect&size=200x200" alt="QR para conectar wallet">
+  </div>
+
+  <br>
+  <button class="btn" onclick="alert('Simulación: Wallet conectada')">Simular conexión</button>
+</body>
+</html>
