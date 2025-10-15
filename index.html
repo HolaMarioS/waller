@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link rel="stylesheet" href="style.css">
+
   <meta charset="UTF-8">
-  <title>Waller – Plataforma Cubana de Conexión</title>
+  <title>Conectar Wallet Real</title>
+  <script src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.7.8/dist/umd/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.6.1/dist/web3.min.js"></script>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to right, #1f4037, #99f2c8);
-      color: #fff;
+      color: white;
       text-align: center;
       padding: 40px;
     }
@@ -20,16 +24,13 @@
       margin-bottom: 30px;
     }
     .btn {
-      display: block;
-      margin: 10px auto;
       padding: 12px 24px;
       background-color: #00796b;
       color: white;
       border: none;
       border-radius: 8px;
       font-size: 16px;
-      text-decoration: none;
-      width: 250px;
+      cursor: pointer;
     }
     .btn:hover {
       background-color: #004d40;
@@ -37,11 +38,40 @@
   </style>
 </head>
 <body>
-  <h1>Bienvenido a Waller</h1>
-  <p>Explora las funciones disponibles en tu plataforma cubana de conexión digital.</p>
+  <h1>Conexión Real con Wallet</h1>
+  <p>Escanea el código QR con Trust Wallet o SafePal para conectar.</p>
+  <button class="btn" onclick="connectWallet()">🔗 Conectar Wallet</button>
 
-  <a class="btn" href="panel_wallet.html">🔗 Panel de conexión con QR</a>
-  <a class="btn" href="conectar_trust_wallet.html">🔐 Conectar Trust Wallet</a>
-  <a class="btn" href="templates/panel.html">🧩 Panel técnico (versión modular)</a>
+  <script>
+    async function connectWallet() {
+      const provider = new WalletConnectProvider.default({
+        rpc: {
+          56: "https://bsc-dataseed.binance.org/"
+        }
+      });
+
+      try {
+        await provider.enable(); // Genera el QR y espera conexión
+        const web3 = new Web3(provider);
+        const accounts = await web3.eth.getAccounts();
+        alert("Wallet conectada: " + accounts[0]);
+      } catch (error) {
+        alert("Error al conectar: " + error.message);
+      }
+    }
+  </script>
+  <!-- Botones de registro e inicio de sesión -->
+<div class="auth-buttons">
+  <button onclick="window.location.href='registro.html'">Registrarse</button>
+  <button onclick="window.location.href='login.html'">Iniciar sesión</button>
+</div>
+
+<!-- Sección de descarga -->
+<div class="download-section">
+  <h3>Descarga la app</h3>
+  <a href="link_android.apk" class="download-btn">Android</a>
+  <a href="link_windows.exe" class="download-btn">Windows</a>
+</div>
+
 </body>
 </html>
