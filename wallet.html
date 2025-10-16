@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Wallet</title>
+ <link rel="stylesheet" href="styles/style.css">
+
+
+
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+  <div class="wallet-panel">
+    <h1>Bienvenido a tu Wallet, <span id="username">Usuario</span> 🪙</h1>
+
+    <div class="wallet-info">
+      <p><strong>Wallet conectada:</strong> <span id="walletAddress">No conectada</span></p>
+      <p><strong>Balance SOL:</strong> <span id="solBalance">0.00</span> ◎</p>
+    </div>
+
+    <button id="connectWallet">🔗 Conectar Wallet</button>
+    <button id="checkBalance">🔄 Ver Balance</button>
+    <button onclick="cerrarSesion()">🚪 Cerrar sesión</button>
+  </div>
+
+  <!-- Scripts -->
+   <script src="scripts/walletconnect.js"></script>
+<p><strong>Balance SOL:</strong> <span id="solBalance">0.00</span> ◎</p>
+<button id="checkBalance">🔄 Ver Balance</button>
+<script src="scripts/balance.js"></script>
+<p><strong>Balance SOL:</strong> <span id="solBalance">0.00</span> ◎</p>
+<div id="splTokens" class="token-list"></div>
+
+  <script src="scripts/session.js"></script>
+  <script src="scripts/walletconnect.js"></script>
+  <script src="scripts/balance.js"></script>
+  <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
+<button id="connectWallet">🔗 Conectar Wallet</button>
+<p><strong>Wallet conectada:</strong> <span id="walletAddress">No conectada</span></p>
+
+</body>
+</html>

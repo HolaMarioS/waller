@@ -3,14 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <title>Conectar Wallet Real</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./src/styles/style.css">
   <script src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.7.8/dist/umd/index.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/web3@1.6.1/dist/web3.min.js"></script>
-  <style>
-    /* Tu CSS aquí */
-  </style>
+  <script type="module" src="./src/main.js"></script>
 </head>
 <body>
+  <h3>Bienvenido, <span id="username-display"></span></h3>
+  <script>
+    document.getElementById("username-display").textContent = localStorage.getItem("loggedInUser");
+  </script>
+
+  <div id="balance-panel">
+    <img src="./src/assets/icons/solana.svg" alt="SOL" class="token-icon">
+    <span id="balance-value">Cargando...</span>
+  </div>
+
+  <button id="logout-btn">Cerrar sesión</button>
+  <script>
+    document.getElementById("logout-btn").onclick = () => {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "login.html";
+    };
+  </script>
+
   <h1>Conexión Real con Wallet</h1>
   <p>Escanea el código QR con Trust Wallet o SafePal para conectar.</p>
   <button class="btn" onclick="connectWallet()">🔗 Conectar Wallet</button>
@@ -18,19 +34,17 @@
   <h2 id="wallet-balance">Balance: --</h2>
   <div id="tokens"><h3>Tokens SPL:</h3></div>
 
-  <!-- Registro/Login -->
   <div class="auth-buttons">
     <button onclick="window.location.href='registro.html'">Registrarse</button>
     <button onclick="window.location.href='login.html'">Iniciar sesión</button>
   </div>
 
-  <!-- Descarga -->
   <div class="download-section">
     <h3>Descarga la app</h3>
     <a href="link_android.apk" class="download-btn">Android</a>
     <a href="link_windows.exe" class="download-btn">Windows</a>
   </div>
 
-  <!-- Script clásico -->
   <script>
-    async function connectWallet() {
+    const user = localStorage.getItem("loggedInUser");
+    if (!user) {

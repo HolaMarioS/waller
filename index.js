@@ -55,3 +55,76 @@ async function mostrarTokens(publicKey) {
   });
 }
 import './style.css';
+document.getElementById("btn-qr").onclick = () => {
+  window.location.href = "/qr.html";
+};
+import './walletconnect.js';
+
+document.getElementById("connect-wallet").onclick = () => {
+  // Aquí puedes disparar la conexión si no se ha iniciado
+};
+document.getElementById("logout-btn").onclick = () => {
+  localStorage.removeItem("loggedInUser");
+  window.location.href = "login.html";
+};
+// session.js
+const user = localStorage.getItem("loggedInUser");
+
+if (!user) {
+  alert("Debes iniciar sesión para acceder a esta sección.");
+  window.location.href = "login.html";
+}
+localStorage.setItem("walletPublicKey", publicKey);
+document.getElementById("wallet-key").textContent = localStorage.getItem("walletPublicKey") || "No conectada";
+const walletKey = localStorage.getItem("walletPublicKey");
+if (!walletKey) {
+  alert("Conecta tu wallet para acceder a funciones avanzadas.");
+  // Puedes redirigir o desactivar botones aquí
+}
+
+localStorage.removeItem("loggedInUser");
+localStorage.removeItem("walletPublicKey");
+window.location.href = "login.html";
+
+setInterval(getBalance, 10000); // cada 10 segundos
+import { Connection, PublicKey, clusterApiUrl, LAMPORTS_PER_SOL } from "@solana/web3.js";
+
+const conection = new Connection(clusterApiUrl("mainnet-beta"), "confirmed");
+const publicKey = new PublicKey(localStorage.getItem("walletPublicKey"));
+
+async function updateBalance() {
+  const lamports = await connection.getBalance(publicKey);
+  const sol = lamports / LAMPORTS_PER_SOL;
+  document.getElementById("balance-value").textContent = sol.toFixed(4) + " SOL";
+}
+
+updateBalance();
+setInterval(updateBalance, 10000); // cada 10 segundos
+document.getElementById("btn-qr").onclick = () => {
+  document.getElementById("qr-panel").style.display = "block";
+};
+document.getElementById("connectWallet").addEventListener("click", async () => {
+  if (window.solana) {
+    try {
+      const response = await window.solana.connect();
+      document.getElementById("walletAddress").textContent = response.publicKey.toString();
+    } catch (err) {
+      console.error("Error al conectar wallet:", err);
+    }
+  } else {
+    alert("Wallet no detectada. Instala Phantom o Solflare.");
+  }
+});
+document.getElementById("checkBalance").addEventListener("click", async () => {
+  if (window.solana && window.solana.isConnected) {
+    const connection = new solanaWeb3.Connection(
+      solanaWeb3.clusterApiUrl("mainnet-beta"),
+      "confirmed"
+    );
+    const publicKey = window.solana.publicKey;
+    const balance = await connection.getBalance(publicKey);
+    document.getElementById("solBalance").textContent = (balance / solanaWeb3.LAMPORTS_PER_SOL).toFixed(4);
+  } else {
+    alert("Wallet no conectada.");
+  }
+});
