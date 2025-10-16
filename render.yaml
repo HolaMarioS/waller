@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: waller-panel
+    env: node
+    buildCommand: npm install
+    startCommand: node index.js
+    rootDir: .
+    plan: free
