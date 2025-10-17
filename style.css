@@ -6,7 +6,7 @@
 .auth-buttons button {
   margin-left: 10px;
   padding: 8px 16px;
-  background-color: #ffffff22;
+  background-color: #271cb8;
   border: none;
   color: white;
   border-radius: 5px;
@@ -21,8 +21,8 @@
   display: inline-block;
   margin: 10px;
   padding: 10px 20px;
-  background-color: #00aa88;
-  color: white;
+  background-color: #0c28c7;
+  color: rgb(15, 1, 1);
   text-decoration: none;
   border-radius: 5px;
 }
@@ -146,3 +146,31 @@ button {
   height: 24px;
   margin-right: 8px;
 }
+  body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #05c2f1, #b8eef5);
+      color: rgb(243, 246, 248);
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+    .btn {
+      padding: 12px 24px;
+      background-color: #3907f0;
+      color: rgb(14, 13, 13);
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #3371f7;
+    }
+  
