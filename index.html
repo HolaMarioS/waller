@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Conectar Wallet Real</title>
-  <link rel="stylesheet" href="./src/styles/style.css">
+
+  <!-- Estilos externos -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Scripts externos -->
   <script src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.7.8/dist/umd/index.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/web3@1.6.1/dist/web3.min.js"></script>
-  <script type="module" src="./src/main.js"></script>
 </head>
 <body>
-  <h3>Bienvenido, <span id="username-display"></span></h3>
-  <script>
-    document.getElementById("username-display").textContent = localStorage.getItem("loggedInUser");
-  </script>
-
-  <div id="balance-panel">
-    <img src="./src/assets/icons/solana.svg" alt="SOL" class="token-icon">
-    <span id="balance-value">Cargando...</span>
-  </div>
-
-  <button id="logout-btn">Cerrar sesión</button>
-  <script>
-    document.getElementById("logout-btn").onclick = () => {
-      localStorage.removeItem("loggedInUser");
-      window.location.href = "login.html";
-    };
-  </script>
-
   <h1>Conexión Real con Wallet</h1>
   <p>Escanea el código QR con Trust Wallet o SafePal para conectar.</p>
   <button class="btn" onclick="connectWallet()">🔗 Conectar Wallet</button>
-  <button id="connect-solflare">🔗 Conectar Solflare</button>
-  <h2 id="wallet-balance">Balance: --</h2>
-  <div id="tokens"><h3>Tokens SPL:</h3></div>
 
+  <script>
+    async function connectWallet() {
+      const provider = new WalletConnectProvider.default({
+        rpc: {
+          56: "https://bsc-dataseed.binance.org/"
+        }
+      });
+
+      try {
+        await provider.enable();
+        const web3 = new Web3(provider);
+        const accounts = await web3.eth.getAccounts();
+        alert("Wallet conectada: " + accounts[0]);
+      } catch (error) {
+        alert("Error al conectar: " + error.message);
+      }
+    }
+  </script>
+
+  <!-- Botones de registro e inicio de sesión -->
   <div class="auth-buttons">
-    <button onclick="window.location.href='registro.html'">Registrarse</button>
+    <button onclick="window.location.href='register.html'">Registrarse</button>
     <button onclick="window.location.href='login.html'">Iniciar sesión</button>
   </div>
 
+  <!-- Sección de descarga -->
   <div class="download-section">
     <h3>Descarga la app</h3>
-    <a href="link_android.apk" class="download-btn">Android</a>
-    <a href="link_windows.exe" class="download-btn">Windows</a>
+    <a href="app-android.apk" class="download-btn" download>Android</a>
+    <a href="app-windows.exe" class="download-btn" download>Windows</a>
   </div>
-
-  <script>
-    const user = localStorage.getItem("loggedInUser");
-    if (!user) {
+</body>
+</html>
